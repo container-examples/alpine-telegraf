@@ -17,7 +17,7 @@ WORKDIR /scripts
 # Downloading Telegraf
 ADD https://dl.influxdata.com/telegraf/releases/telegraf-${TELEGRAF_VERSION}-static_linux_amd64.tar.gz ./
 RUN addgroup telegraf && \
-    adduser -s /bin/false -G telegraf -S -D telegraf
+    adduser -s /bin/false -G root -S -D telegraf
 
 # Coping config & scripts
 COPY ./files/telegraf.conf /etc/telegraf/telegraf.conf
@@ -27,6 +27,6 @@ COPY ./scripts/start.sh start.sh
 RUN tar -C . -xzf telegraf-${TELEGRAF_VERSION}-static_linux_amd64.tar.gz && \
         chmod +x telegraf/* && \
         cp telegraf/telegraf /usr/bin/ && \
-        rm -rf *.tar.gz* telegraf/
+        rm -rf *.tar.gz* telegraf/ 
 
 ENTRYPOINT [ "./start.sh" ]

@@ -12,6 +12,21 @@ pipeline:
       event: 
         - push
 
+  publish:
+    image: plugins/docker
+    repo: perriea/alpine-telegraf
+    dockerfile: Dockerfile
+    secrets: [ docker_username, docker_password ]
+    tag:
+      - dev
+    when:
+      branch:
+        - feature/*
+        - fixing/*
+        - dev/*
+      event: 
+        - push
+
   slack:
     image: plugins/slack
     webhook: https://hooks.slack.com/services/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

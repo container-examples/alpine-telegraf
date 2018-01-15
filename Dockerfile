@@ -16,11 +16,12 @@ WORKDIR /scripts
 
 # Downloading Telegraf
 ADD https://dl.influxdata.com/telegraf/releases/telegraf-${TELEGRAF_VERSION}-static_linux_amd64.tar.gz ./
+
+# docker.sock access is only for root
 RUN addgroup telegraf && \
     adduser -s /bin/false -G root -S -D telegraf
 
 # Coping config & scripts
-COPY ./files/telegraf.conf /etc/telegraf/telegraf.conf
 COPY ./scripts/start.sh start.sh
 
 # Installing packages

@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  telegraf:
+    image: perriea/alpine-telegraf:3.7
+    build: ./
+    hostname: telegraf
+    depends_on:
+      - influxdb
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 1
+        window: 120s
+      resources:
+        limits:
+          cpus: '10.000'
+          memory: 256M
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    configs:
+      - source: config_telegraf
+        target: /etc/telegraf/telegraf.conf
+    networks:
+      - internal_monitoring
+
+configs:
+  config_telegraf:
+    file: configs/telegraf.conf
+
+networks:
+  internal_monitoring:

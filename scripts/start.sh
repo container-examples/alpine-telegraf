@@ -1,3 +1,2 @@
 #!/bin/sh
-
-exec su-exec telegraf /usr/bin/telegraf
+exec su-exec telegraf /usr/bin/telegraf $@

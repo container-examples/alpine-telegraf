@@ -1,12 +1,11 @@
 FROM alpine:3.7
 
-LABEL MAINTAINER="Aurelien PERRIER <perrie_a@etna-alternance.net>"
+LABEL MAINTAINER="Aurelien PERRIER <a.perrier89@gmail.com>"
 LABEL APP="telegraf"
-LABEL APP_VERSION="1.5.0"
 LABEL APP_REPOSITORY="https://github.com/influxdata/telegraf/releases"
 
 ENV TIMEZONE Europe/Paris
-ENV TELEGRAF_VERSION 1.5.0
+ENV TELEGRAF_VERSION 1.5.2
 
 # Work path
 WORKDIR /scripts

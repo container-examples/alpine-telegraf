@@ -3,7 +3,7 @@
 ## Versions
 
 Alpine : `3.7`   
-Telegraf : `1.5.0`   
+Telegraf : `1.5.2`   
 
 ## Commands
 

@@ -5,7 +5,7 @@ LABEL APP="telegraf"
 LABEL APP_REPOSITORY="https://github.com/influxdata/telegraf/releases"
 
 ENV TIMEZONE Europe/Paris
-ENV TELEGRAF_VERSION 1.5.2
+ENV TELEGRAF_VERSION 1.6.3
 
 # Work path
 WORKDIR /scripts
